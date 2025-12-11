@@ -18,19 +18,19 @@ const Hero: React.FC = () => {
 
   return (
     <div ref={containerRef} className="relative h-screen w-full overflow-hidden bg-white flex items-center justify-center">
-      {/* Background Text - Fixed behind */}
+      {/* Background Text - Now in Foreground (z-30) */}
       <div 
-        className="fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none z-0"
+        className="fixed top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none z-30"
         style={{ 
             transform: `translateY(${scrollY * 0.2}px)`
         }}
       >
-        <h1 className="text-[25vw] font-display font-bold text-gray-100 tracking-tighter leading-none select-none">
+        <h1 className="text-[25vw] font-display font-bold text-gray-400 tracking-tighter leading-none select-none mix-blend-normal">
           CONTOUR
         </h1>
       </div>
 
-      {/* Foreground Image Container */}
+      {/* Image Container - Behind Text (z-10) */}
       <div 
         className="relative z-10 w-full max-w-md md:max-w-xl px-4 transition-transform will-change-transform"
         style={{ 
