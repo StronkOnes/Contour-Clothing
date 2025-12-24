@@ -23,7 +23,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, selectedIndex, onClose, onN
   return (
     <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center" onClick={onClose}>
       <button 
-        className="absolute top-4 right-4 text-white hover:text-gray-300"
+        className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
         onClick={(e) => {
           e.stopPropagation();
           onClose();

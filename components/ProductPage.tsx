@@ -54,10 +54,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, onAddToCart, onBack 
                   <div 
                     key={index}
                     className={`aspect-[3/4] overflow-hidden rounded-sm shadow-lg relative bg-gray-100 cursor-pointer ${currentImageIndex === index ? 'ring-2 ring-black' : ''}`}
-                    onClick={() => {
-                      setCurrentImageIndex(index);
-                      openLightbox(index);
-                    }}
+                    onClick={() => openLightbox(index)}
                   >
                     <img 
                       src={image} 
