@@ -26,4 +26,4 @@ export interface UserContact {
   message: string;
 }
 
-export type PageView = 'home' | 'about' | 'contact' | 'product';
+export type PageView = 'home' | 'about' | 'contact' | 'product' | 'admin';

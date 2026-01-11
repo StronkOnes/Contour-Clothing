@@ -1,24 +1,36 @@
 import React, { useState } from 'react';
 import { ShieldCheck, X, Loader2 } from 'lucide-react';
+import { supabase } from '../supabaseClient';
 
 interface PaystackModalProps {
   isOpen: boolean;
   onClose: () => void;
   amount: number;
-  email: string;
   onSuccess: () => void;
 }
 
-const PaystackModal: React.FC<PaystackModalProps> = ({ isOpen, onClose, amount, email, onSuccess }) => {
+const PaystackModal: React.FC<PaystackModalProps> = ({ isOpen, onClose, amount, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState<'card' | 'processing' | 'success'>('card');
+  const [email, setEmail] = useState('');
 
   if (!isOpen) return null;
 
-  const handlePay = (e: React.FormEvent) => {
+  const handlePay = async (e: React.FormEvent) => {
     e.preventDefault();
     setStep('processing');
     setLoading(true);
+
+    const { data, error } = await supabase
+      .from('orders')
+      .insert([{ email: email, amount: amount }]);
+
+    if (error) {
+      console.error('Error inserting order:', error);
+      // Handle error appropriately
+    } else {
+      console.log('Order inserted:', data);
+    }
     
     // Simulate network request
     setTimeout(() => {
@@ -49,11 +61,14 @@ const PaystackModal: React.FC<PaystackModalProps> = ({ isOpen, onClose, amount, 
             <div className="mb-6 text-center">
                 <p className="text-gray-500 text-sm uppercase tracking-wider">Total to Pay</p>
                 <h2 className="text-3xl font-bold text-[#0ba4db]">ZAR {amount.toFixed(2)}</h2>
-                <p className="text-xs text-gray-400 mt-1">{email}</p>
             </div>
 
             {step === 'card' && (
                 <form onSubmit={handlePay} className="space-y-4">
+                    <div className="space-y-2">
+                        <label className="text-xs font-bold text-gray-500 uppercase">Email</label>
+                        <input type="email" placeholder="Enter your email" className="w-full border border-gray-300 rounded p-3 focus:outline-none focus:border-[#0ba4db]" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    </div>
                     <div className="space-y-2">
                         <label className="text-xs font-bold text-gray-500 uppercase">Card Number</label>
                         <input type="text" placeholder="0000 0000 0000 0000" className="w-full border border-gray-300 rounded p-3 focus:outline-none focus:border-[#0ba4db]" required />

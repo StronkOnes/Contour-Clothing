@@ -56,9 +56,10 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, onNavigate, isDa
              setTimeout(() => {
                 document.getElementById('collection')?.scrollIntoView({ behavior: 'smooth' });
              }, 100);
-          }} className={linkClasses}>Collections</button>
+          }} className={linkClasses}>Collection</button>
           <button onClick={() => handleNav('about')} className={linkClasses}>About</button>
           <button onClick={() => handleNav('contact')} className={linkClasses}>Contact</button>
+          <button onClick={() => handleNav('admin')} className={linkClasses}>Admin</button>
         </div>
 
         {/* Actions */}
@@ -91,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart, onNavigate, isDa
         {mobileMenuOpen && (
           <div className={`fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in md:hidden ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
             <button onClick={() => handleNav('home')} className="text-2xl font-display uppercase">Home</button>
-            <button onClick={() => handleNav('home')} className="text-2xl font-display uppercase">Collections</button>
+            <button onClick={() => handleNav('home')} className="text-2xl font-display uppercase">Collection</button>
             <button onClick={() => handleNav('about')} className="text-2xl font-display uppercase">About</button>
             <button onClick={() => handleNav('contact')} className="text-2xl font-display uppercase">Contact</button>
           </div>

@@ -6,6 +6,8 @@ import CartDrawer from './components/CartDrawer';
 import PaystackModal from './components/PaystackModal';
 import ProductPage from './components/ProductPage';
 import { PRODUCTS, SOCIAL_LINKS } from './constants';
+import AdminPage from './components/AdminPage';
+import Login from './components/Login';
 import { Product, CartItem, PageView } from './types';
 import { ArrowRight, Instagram, Facebook, Twitter, MapPin, Mail, Phone } from 'lucide-react';
 
@@ -16,9 +18,27 @@ const App: React.FC = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [password, setPassword] = useState(() => {
+    return localStorage.getItem('adminPassword') || 'password';
+  });
 
   const toggleDarkMode = () => {
     setIsDarkMode(prev => !prev);
+  };
+
+  const handleLogin = (enteredPassword: string) => {
+    if (enteredPassword === password) {
+      setIsAdmin(true);
+    } else {
+      alert('Incorrect password');
+    }
+  };
+
+  const handleSetPassword = (newPassword: string) => {
+    setPassword(newPassword);
+    localStorage.setItem('adminPassword', newPassword);
+    alert('Password updated successfully!');
   };
 
   // Cart Management
@@ -79,12 +99,12 @@ const App: React.FC = () => {
     <div id="collection" className="bg-white dark:bg-black relative z-20">
       <section className="py-24 container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-black dark:border-white pb-4">
-          <div>
+          <div className="text-center w-full">
             <h2 className="text-5xl md:text-7xl font-display font-bold uppercase mb-2">The Drop</h2>
-            <p className="text-gray-500 max-w-md">Limited edition black and white essentials.</p>
+            <p className="text-gray-500 max-w-md mx-auto">Limited edition black and white essentials.</p>
           </div>
           <div className="hidden md:block">
-            <span className="text-xs font-bold uppercase tracking-widest">001 / 005</span>
+            <span className="text-xs font-bold uppercase tracking-widest">Total Products: {allProducts.length}</span>
           </div>
         </div>
         
@@ -191,6 +211,7 @@ const App: React.FC = () => {
         )}
         {currentPage === 'about' && <About />}
         {currentPage === 'contact' && <Contact />}
+        {currentPage === 'admin' && (isAdmin ? <AdminPage onSetPassword={handleSetPassword} /> : <Login onLogin={handleLogin} />)}
         {currentPage === 'product' && selectedProduct && (
           <ProductPage 
             product={selectedProduct} 
@@ -227,7 +248,6 @@ const App: React.FC = () => {
         isOpen={isCheckoutOpen}
         onClose={() => setIsCheckoutOpen(false)}
         amount={cartTotal}
-        email="customer@example.com"
         onSuccess={clearCart}
       />
     </div>
