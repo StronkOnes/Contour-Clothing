@@ -1,20 +1,41 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img width="1200" height="475" alt="Contour Worldwide Clothing Store" src="public/WebImages/Hero.jpeg" />
 </div>
 
-# Run and deploy your AI Studio app
+# Contour Worldwide Clothing Store
 
-This contains everything you need to run your app locally.
+This is an e-commerce website for Contour Worldwide, a clothing brand targeting Gen Z and individuals aged 25-40 with high-quality, comfortable, and stylish t-shirts, hoodies, and sweaters.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1qNa-WTYd59tMrarX_PD0sWtP2q012L_1
+## Features
+
+- Modern e-commerce interface with product listings
+- Shopping cart functionality
+- Secure payment processing via Yoco
+- Customer name and email collection
+- Email marketing consent option
+- Admin dashboard to track sales and customer information
+- Dark/light mode toggle
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Run the app:
    `npm run dev`
+
+## Payment Processing
+
+The store uses Yoco for secure payment processing. When customers proceed to checkout, they are redirected to the secure Yoco payment portal at https://pay.yoco.com/contour-worldwide.
+
+Customer information (name, email) and email marketing consent are captured and stored in the database for administrative purposes.
+
+## Admin Portal
+
+Access the admin portal by navigating to the admin section of the website. The admin dashboard shows:
+- Total sales
+- Total orders
+- Email subscribers count
+- Email consent rate
+- Recent orders with customer details

@@ -17,14 +17,22 @@ const App: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
   const [isAdmin, setIsAdmin] = useState(false);
   const [password, setPassword] = useState(() => {
     return localStorage.getItem('adminPassword') || 'password';
   });
 
   const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
+    setIsDarkMode(prev => {
+      const newMode = !prev;
+      if (newMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      return newMode;
+    });
   };
 
   const handleLogin = (enteredPassword: string) => {
@@ -193,9 +201,9 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className={`min-h-screen font-sans text-brand-black bg-white ${isDarkMode ? 'dark' : ''}`}>
-      <Navbar 
-        cartCount={cartCount} 
+    <div className={`min-h-screen font-sans text-brand-black bg-white dark:bg-black dark:text-white ${isDarkMode ? 'dark' : ''}`}>
+      <Navbar
+        cartCount={cartCount}
         onOpenCart={() => setIsCartOpen(true)}
         onNavigate={(page) => setCurrentPage(page)}
         isDarkMode={isDarkMode}
@@ -226,8 +234,30 @@ const App: React.FC = () => {
           <div>
             <h2 className="text-3xl font-display font-bold">Contour Worldwide</h2>
           </div>
-          <div className="text-gray-500 text-xs uppercase tracking-widest">
-            &copy; {new Date().getFullYear()} Contour Worldwide.
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-6 mb-4 bg-white bg-opacity-10 p-2 rounded">
+              <img
+                src="/WebImages/secure_pay.jpg"
+                alt="Secure Payment"
+                className="h-8 object-contain"
+                onError={(e) => {
+                  console.error('Secure payment image failed to load');
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+              <img
+                src="/WebImages/YOCO.png"
+                alt="Yoco Payment"
+                className="h-8 object-contain"
+                onError={(e) => {
+                  console.error('Yoco image failed to load');
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
+            <div className="text-gray-500 text-xs uppercase tracking-widest">
+              &copy; {new Date().getFullYear()} Contour Worldwide.
+            </div>
           </div>
         </div>
       </footer>
