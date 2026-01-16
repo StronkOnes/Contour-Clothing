@@ -8,6 +8,8 @@ import ProductPage from './components/ProductPage';
 import { PRODUCTS, SOCIAL_LINKS } from './constants';
 import AdminPage from './components/AdminPage';
 import Login from './components/Login';
+import TermsOfService from './components/TermsOfService';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import { Product, CartItem, PageView } from './types';
 import { ArrowRight, Instagram, Facebook, Twitter, MapPin, Mail, Phone } from 'lucide-react';
 
@@ -227,12 +229,18 @@ const App: React.FC = () => {
             onBack={handleBackToCollection}
           />
         )}
+        {currentPage === 'terms-of-service' && <TermsOfService />}
+        {currentPage === 'privacy-policy' && <PrivacyPolicy />}
       </main>
 
       <footer className="bg-black text-white py-16 px-6 relative z-20">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
             <h2 className="text-3xl font-display font-bold">Contour Worldwide</h2>
+            <div className="flex gap-4 mt-4">
+              <a href="#" onClick={() => setCurrentPage('terms-of-service')} className="text-sm text-gray-400 hover:text-white">Terms of Service</a>
+              <a href="#" onClick={() => setCurrentPage('privacy-policy')} className="text-sm text-gray-400 hover:text-white">Privacy Policy</a>
+            </div>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center gap-6 mb-4 bg-white bg-opacity-10 p-2 rounded">
@@ -277,8 +285,9 @@ const App: React.FC = () => {
       <PaystackModal 
         isOpen={isCheckoutOpen}
         onClose={() => setIsCheckoutOpen(false)}
-        amount={cartTotal}
+        cart={cart}
         onSuccess={clearCart}
+        onNavigate={setCurrentPage}
       />
     </div>
   );

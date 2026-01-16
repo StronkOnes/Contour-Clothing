@@ -104,9 +104,13 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
         {/* Footer */}
         {cart.length > 0 && (
           <div className="p-6 border-t border-gray-100 bg-gray-50">
-            <div className="flex justify-between mb-4 text-sm">
+            <div className="flex justify-between mb-2 text-sm">
               <span className="text-gray-600">Subtotal</span>
               <span className="font-bold">R {subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between mb-4 text-sm">
+              <span className="text-gray-600">Delivery</span>
+              <span className="font-bold">FREE</span>
             </div>
             <div className="flex justify-between mb-6 text-lg font-bold">
               <span>Total</span>
@@ -119,8 +123,8 @@ const CartDrawer: React.FC<CartDrawerProps> = ({
               <Lock className="w-4 h-4" />
               Checkout
             </button>
-            <p className="text-center text-xs text-gray-400 mt-4 flex items-center justify-center gap-1">
-              Secured by Paystack
+            <p className="text-center text-xs text-gray-400 mt-4">
+              All prices include free delivery.
             </p>
           </div>
         )}

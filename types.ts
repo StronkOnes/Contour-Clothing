@@ -18,6 +18,16 @@ export interface Product {
 
 export interface CartItem extends Product {
   quantity: number;
+  delivery_fee?: number;
+}
+
+export interface Order {
+  name: string;
+  email: string;
+  address: string;
+  delivery_option: string;
+  cart: CartItem[];
+  delivery_fee: number;
 }
 
 export interface UserContact {
@@ -26,4 +36,4 @@ export interface UserContact {
   message: string;
 }
 
-export type PageView = 'home' | 'about' | 'contact' | 'product' | 'admin';
+export type PageView = 'home' | 'about' | 'contact' | 'product' | 'admin' | 'terms-of-service' | 'privacy-policy';

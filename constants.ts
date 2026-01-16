@@ -4,7 +4,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bw-001',
     name: 'Void Hoodie',
-    price: 950,
+    price: 1050,
     description: 'Heavyweight black french terry hoodie with minimalist structure.',
     image: '/WebImages/Collection1.png', // Keep for backward compatibility if needed elsewhere
     imageBack: '/WebImages/Collection1.1.png', // Keep for backward compatibility if needed elsewhere
@@ -17,8 +17,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bw-002',
     name: 'Team Baddest Hoodie',
-    price: 850,
-    description: 'Oversized white tee with distressed detailing.',
+    price: 950,
+    description: 'Oversized white hoodie with distressed detailing.',
     image: '/WebImages/Collection2.png',
     imageBack: '/WebImages/Collection2.1.png',
     galleryImages: ['/WebImages/Collection2.png', '/WebImages/Collection2.1.png'],
@@ -30,8 +30,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bw-003',
     name: 'Abyss Tee',
-    price: 550,
-    description: 'Jet black pigment dyed hoodie. Boxy fit.',
+    price: 650,
+    description: 'Jet black pigment dyed tee. Boxy fit.',
     image: '/WebImages/Collextion3.jpg',
     imageBack: '/WebImages/Collection3.1.jpg',
     galleryImages: ['/WebImages/Collextion3.jpg', '/WebImages/Collection3.1.jpg'],
@@ -43,7 +43,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bw-004',
     name: 'Phantom Hoodie',
-    price: 850,
+    price: 950,
     description: 'Premium white cotton. High density neck ribbing.',
     image: '/WebImages/Collection4.jpeg',
     imageBack: '/WebImages/Collection4.1.jpeg',
@@ -56,7 +56,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bw-005',
     name: 'Eclipse Hoodie',
-    price: 850,
+    price: 950,
     description: 'The ultimate black hoodie. Double layered hood.',
     image: '/WebImages/Collection5.png',
     imageBack: '/WebImages/Collection5.1.png',
@@ -68,7 +68,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bw-006',
     name: 'Mono Hoodie',
-    price: 850,
+    price: 950,
     description: 'A classic crewneck sweatshirt for everyday wear.',
     image: '/WebImages/Collection6.jpeg',
     imageBack: '/WebImages/Collection6.jpeg',
@@ -81,8 +81,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bw-007',
     name: 'Urban Hoodie',
-    price: 950,
-    description: 'A stylish tee with a unique graphic print.',
+    price: 1050,
+    description: 'A stylish hoodie with a unique graphic print.',
     image: '/WebImages/Collection7.png',
     imageBack: '/WebImages/Collection7.1.png',
     galleryImages: ['/WebImages/Collection7.png', '/WebImages/Collection7.1.png'],
@@ -94,7 +94,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'bw-008',
     name: 'Stealth Hoodie',
-    price: 850,
+    price: 950,
     description: 'A sleek hoodie with subtle design elements.',
     image: '/WebImages/Collection8.png',
     imageBack: '/WebImages/Collection8.2.png',
